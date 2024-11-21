@@ -42,6 +42,12 @@ const root = {
 
 const app = express();
 app.use(cors()); 
+
+// Root route
+app.get('/', (req, res) => {
+  res.send("Hola, mundo");
+});
+
 app.use(
   '/graphql',
   graphqlHTTP({
