@@ -1,7 +1,7 @@
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
-const cors = require('cors');
+import express from 'express';
+import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from 'graphql';
+import cors from 'cors';
 
 // Sample data
 const words = [
@@ -41,11 +41,11 @@ const root = {
 };
 
 const app = express();
-app.use(cors()); 
+app.use(cors());
 
 // Root route
 app.get('/', (req, res) => {
-  res.send("Hola, mundo");
+  res.send('Hola, mundo');
 });
 
 app.use(
@@ -61,3 +61,6 @@ const port = process.env.PORT || 4000;
 app.listen(port, () =>
   console.log('Server running on http://localhost:4000/graphql')
 );
+
+// At the end of server.js
+export default app;
