@@ -41,7 +41,14 @@ const root = {
 };
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      'https://memowo-fe-bmeed5dkbpcre6e6.canadacentral-01.azurewebsites.net', // Allow requests from the deployed frontend
+    methods: 'GET,POST',
+    credentials: true,
+  })
+);
 
 // Root route
 app.get('/', (req, res) => {
