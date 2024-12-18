@@ -1,0 +1,26 @@
+trigger:
+- main  # Run pipeline on push to 'main' branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm test
+    npm run build
+  displayName: 'Install Dependencies, Run Tests, and Build Backend'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'AzureForStudentsConnection'
+    appType: 'webAppLinux'  # Specify that this is a Linux-based Web App
+    appName: 'memowo-be'
+    package: '.'
+  displayName: 'Deploy Backend to Azure'
+
