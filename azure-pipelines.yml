@@ -11,7 +11,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm ci
     npm audit fix || true  # Attempt to fix vulnerabilities; ignore errors
     npm test || echo 'No tests defined'
   displayName: 'Install Dependencies and Run Tests'
