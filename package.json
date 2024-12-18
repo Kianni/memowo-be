@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",                   
+    "build": "echo 'No build step required'", 
+    "dev": "nodemon server.js"       
   },
   "keywords": [],
   "author": "",
