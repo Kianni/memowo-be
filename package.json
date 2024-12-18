@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha",                   
-    "build": "echo 'No build step required'", 
-    "dev": "nodemon server.js"       
+    "test": "mocha --exit",
+    "build": "echo 'No build step required'",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
