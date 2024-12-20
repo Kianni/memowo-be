@@ -23,6 +23,13 @@ const words = [
   { spanish: 'almeja', english: 'clam' },
 ];
 
+
+// {
+//   words {
+//     spanish
+//     english
+//   }
+// }
 // GraphQL schema
 const schema = buildSchema(`
   type Word {
@@ -40,11 +47,22 @@ const root = {
   words: () => words,
 };
 
+// CORS configuration
+const allowedOrigins = [
+  'https://memowo-fe-bmeed5dkbpcre6e6.canadacentral-01.azurewebsites.net',
+  'http://localhost:3000'
+];
+
 const app = express();
 app.use(
   cors({
-    origin:
-      'https://memowo-fe-bmeed5dkbpcre6e6.canadacentral-01.azurewebsites.net', // Allow requests from the deployed frontend
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: 'GET,POST',
     credentials: true,
   })
